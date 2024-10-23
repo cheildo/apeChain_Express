@@ -1,4 +1,4 @@
-# APECoin Transfer and Wallet Balance Manager
+# Generate wallets and distribute APE coins
 
 This project is a Node.js script that automates the creation of multiple Ethereum wallets, transfers a specified amount of the native token APE to those wallets, estimates the gas required for the transaction, and saves the balances of the recipient wallets into a JSON file.
 
@@ -18,7 +18,7 @@ This project is a Node.js script that automates the creation of multiple Ethereu
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/ape-coin-transfer.git
+   git clone https://github.com/cheildo/generateWallets.git
    ```
 
 2. Install the required dependencies:
@@ -68,10 +68,10 @@ After running the script, the console output will show something like this:
 Balance of primary wallet 0xYourPrimaryWalletAddress is 10.123 APE
 Estimate gas for transferring APE: 50000
 Pending nonce 0
-2 APEs sent to account0 0xRecipientWalletAddress1
+1 APE sent to account0 0xRecipientWalletAddress1
 Transaction Hash 0xTransactionHash1
 
-2 APEs sent to account1 0xRecipientWalletAddress2
+1 APE sent to account1 0xRecipientWalletAddress2
 Transaction Hash 0xTransactionHash2
 
 ...Program completed...
