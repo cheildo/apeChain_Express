@@ -1,0 +1,17 @@
+{
+  "name": "generatewallets",
+  "version": "1.0.0",
+  "description": "Generate ethereum wallets and distribute Apecoin",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chek Zida",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "fs": "^0.0.1-security",
+    "web3": "^4.14.0"
+  }
+}

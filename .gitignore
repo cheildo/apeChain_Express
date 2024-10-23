@@ -1,0 +1,4 @@
+node_modules/
+.env
+generateWallet.js
+wallets.json.env
