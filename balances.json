@@ -1,0 +1,194 @@
+[
+  {
+    "address": "0xe291110B22bb78003783C659A28b414092FE23F9",
+    "balance": "1.000000269066329896 ETH"
+  },
+  {
+    "address": "0x777680BCf0a619c09AB72861c62f01a8b3FFf0C9",
+    "balance": "1.000000262167191636 ETH"
+  },
+  {
+    "address": "0x8E3d2Fd87bC9707070572943f73Db43F00afA758",
+    "balance": "1.000000259210418009 ETH"
+  },
+  {
+    "address": "0x1aD788c3e7e056826b0AE0aee1F1Ba1271708645",
+    "balance": "1.000000253296870809 ETH"
+  },
+  {
+    "address": "0xfA9Fe21E2dC1d50d576404440848f39e63FE0f12",
+    "balance": "1.000000250340096474 ETH"
+  },
+  {
+    "address": "0x12294B66C191bEB507c2eC191eCeeC4B8A0808E3",
+    "balance": "1.000000247383322928 ETH"
+  },
+  {
+    "address": "0xdc5c53A1864028E1F302fbB17d72d4c550e0E711",
+    "balance": "1.00000024146977589 ETH"
+  },
+  {
+    "address": "0x300A0cAD061B20830BDC3C736Fd76340D2FDfb44",
+    "balance": "1.000000238513002398 ETH"
+  },
+  {
+    "address": "0x337A27998BCeA875fB18dCDB1CdC285d5068a9EE",
+    "balance": "1.000000232599455704 ETH"
+  },
+  {
+    "address": "0xA485Ce63c0b4bE77D745e59cdA15DAA2B89B202F",
+    "balance": "1.000000229642681564 ETH"
+  },
+  {
+    "address": "0xd348ea213dD598AF5AF2A319826C5c875CdEb601",
+    "balance": "1.000000225700317016 ETH"
+  },
+  {
+    "address": "0xB500bBd701838b999da8eD513B0A1B80d4Efd693",
+    "balance": "1.000000219786770254 ETH"
+  },
+  {
+    "address": "0x3340Dbae6133e046db73426d626958082cfb4804",
+    "balance": "1.000000213873223564 ETH"
+  },
+  {
+    "address": "0x1652a2E05BAdF9A39f1f3821ADE1b9C9A060f25f",
+    "balance": "1.000000207959676946 ETH"
+  },
+  {
+    "address": "0x7045234178cFd46a98B92C4Eff676Ef2357438d2",
+    "balance": "1.000000205002903248 ETH"
+  },
+  {
+    "address": "0xFabafAFb1C719853c329121412Fc045Fa9BEcc89",
+    "balance": "1.00000020204612999 ETH"
+  },
+  {
+    "address": "0xFF2480188068B1ed15Cd50B7e3b03fE7F7076d48",
+    "balance": "1.000000196132583528 ETH"
+  },
+  {
+    "address": "0xA51Fa427364815f232E2cd1708Bf7b668063ea3D",
+    "balance": "1.000000190219037138 ETH"
+  },
+  {
+    "address": "0x27a32a6e2cc8351129CeF1831084E3f952F62841",
+    "balance": "1.00000018430549082 ETH"
+  },
+  {
+    "address": "0x588ffd65468E5Eb5cB1F6d3A235CdCcaf32B165F",
+    "balance": "1.000000180363126648 ETH"
+  },
+  {
+    "address": "0xbAd955Fb43F6B62930320e77dA454bb8D3797963",
+    "balance": "1.000000177406353 ETH"
+  },
+  {
+    "address": "0x9e913a2B6C70B901913414E21b28c4B225687B14",
+    "balance": "1.00000017149280703 ETH"
+  },
+  {
+    "address": "0x80A13c31F64203306F3fE95f22D16331C4111082",
+    "balance": "1.000000165579260952 ETH"
+  },
+  {
+    "address": "0xA84f5e555bA78d3E25115b4feF527b71158251Fd",
+    "balance": "1.00000015670894197 ETH"
+  },
+  {
+    "address": "0x5a4abf1e0058E76Ec38d62e05941247878c97cEe",
+    "balance": "1.000000144881850246 ETH"
+  },
+  {
+    "address": "0x537DB8b2F1066879c4968f46EA6cdD2370303D73",
+    "balance": "1.000000138968304069 ETH"
+  },
+  {
+    "address": "0xE24f54f8A053025Feb5bBDc010A4151E794247E8",
+    "balance": "1.000000133054758405 ETH"
+  },
+  {
+    "address": "0x7CA3d51B1573e9D8DAde5Aaf833f042567e54AB4",
+    "balance": "1.000000127141212813 ETH"
+  },
+  {
+    "address": "0x09696A07D153D239F50D5FE43c73acB587e47414",
+    "balance": "1.000000121227667293 ETH"
+  },
+  {
+    "address": "0xE84602d01b12ce9b0A525cd9F0A6345e6809fD37",
+    "balance": "1.00000011827089456 ETH"
+  },
+  {
+    "address": "0x3b8B50D68541Be5E12E43EFA2eD9BEd9F6FD9C60",
+    "balance": "1.000000115314121494 ETH"
+  },
+  {
+    "address": "0xbF7E1B48Ed614d31c371FcA459eEcCC621Ea33EA",
+    "balance": "1.000000109400576247 ETH"
+  },
+  {
+    "address": "0xEAADdd26a0419Dd7dF53a530494608f49C2Eeb83",
+    "balance": "1.000000103487030955 ETH"
+  },
+  {
+    "address": "0x1f81ff6Ad573Ea6f5E5C60E546aC2CFe8E48E409",
+    "balance": "1.000000096587894872 ETH"
+  },
+  {
+    "address": "0x96120bf23b86fe88F08331EFD89014029F0d6cD5",
+    "balance": "1.000000090674349736 ETH"
+  },
+  {
+    "address": "0xe6214c206F0edd1a34D6dBd694866Cc49CeC81ab",
+    "balance": "1.000000084760804672 ETH"
+  },
+  {
+    "address": "0xEEEC3cb20a23653586329a1E0cfF28A8bebd49c8",
+    "balance": "1.000000081804032001 ETH"
+  },
+  {
+    "address": "0x9477bFb544B4275e0F69de826A06c65B37A0a229",
+    "balance": "1.00000007884725952 ETH"
+  },
+  {
+    "address": "0xacdFd0b5B1A98643100Df93e43070A1d2B61860d",
+    "balance": "1.000000072933714612 ETH"
+  },
+  {
+    "address": "0x23dD4A9e22cd92A55c13f513251188845ad78595",
+    "balance": "1.000000067020169776 ETH"
+  },
+  {
+    "address": "0xFE641D2c834054A6e5091473B85E7ac2f11A1F79",
+    "balance": "1.000000064063397385 ETH"
+  },
+  {
+    "address": "0x9D351D151D4B16084d4BEDB5a9bCF156A0FE1C9B",
+    "balance": "1.000000061106624826 ETH"
+  },
+  {
+    "address": "0x638a4101490063bCE7837D6FC15f683E874FCfFb",
+    "balance": "1.000000057164261702 ETH"
+  },
+  {
+    "address": "0x1962C4710E42dde23708023807c82eA8eE3699db",
+    "balance": "1.000000051250717128 ETH"
+  },
+  {
+    "address": "0xE326A8b341712d531D89F302BD5F452302e3495e",
+    "balance": "1.000000045337172568 ETH"
+  },
+  {
+    "address": "0x76CA728973554ef97c42E1d91034522D01883b4E",
+    "balance": "1.00000003942362808 ETH"
+  },
+  {
+    "address": "0xef7B9F998dB707dB3389934dFBABccb7c86D808F",
+    "balance": "1.000000033510083562 ETH"
+  },
+  {
+    "address": "0x0F6e26019B156784c9d64E46a2F54Bfe62F5350c",
+    "balance": "1.000000027596539236 ETH"
+  }
+]
