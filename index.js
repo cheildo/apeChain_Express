@@ -1,8 +1,6 @@
 const {Web3} = require('web3');
 const fs = require('fs');
 const {
-    numberOfWallet, 
-    amountAPE,
     amountToBuy,
     rpc_node,
     tokenAddress,
