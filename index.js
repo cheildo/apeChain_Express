@@ -44,37 +44,41 @@ async function main() {
 }
 
 async function buyToken(walletAddress) {
-    const amountBuy = web3.utils.toWei(amountToBuy, 'ether');
-    //const valueETH = web3.utils.toWei("1", 'ether');
-    
-    const balanceAPE = await web3.eth.getBalance(walletAddress);
-    console.log(`Balance APE is ${balanceAPE}`);
+    try {
+        const amountBuy = web3.utils.toWei(amountToBuy, 'ether');
+        //const valueETH = web3.utils.toWei("1", 'ether');
+        
+        const balanceAPE = await web3.eth.getBalance(walletAddress);
+        console.log(`Balance APE is ${balanceAPE}`);
 
-    const balanceDApe = await tokenContract.methods.balanceOf(walletAddress).call()
-    console.log(`buyToken: token balance is ${balanceDApe}`)
+        const balanceDApe = await tokenContract.methods.balanceOf(walletAddress).call()
+        console.log(`buyToken: token balance is ${balanceDApe}`)
 
-    const estimateGas = await tokenSaleContract.methods.buy(amountBuy)
-    .estimateGas({from: walletAddress, value: amountBuy, gas: 3000000})
-    .then(function(gasAmount) {
-        return gasAmount+BigInt(30000);
-    })
-    console.log(`buyToken: estimateGas is ${estimateGas}`)
+        const estimateGas = await tokenSaleContract.methods.buy(amountBuy)
+        .estimateGas({from: walletAddress, value: amountBuy, gas: 3000000})
+        .then(function(gasAmount) {
+            return gasAmount+BigInt(30000);
+        })
+        console.log(`buyToken: estimateGas is ${estimateGas}`)
 
-    const nonce= await web3.eth.getTransactionCount(walletAddress, 'pending');
-    console.log(`Wallet nonce ${nonce}`);
+        const nonce= await web3.eth.getTransactionCount(walletAddress, 'pending');
+        console.log(`Wallet nonce ${nonce}`);
 
-    // const buyToken = await tokenSaleContract.methods.buy(amountBuy)
-    // .send({from: walletAddress, value: amountBuy, gas: estimateGas, nonce: nonce})
-    // .then(async (res) => {
-    //     console.log(`buyToken: transactionHash ${res.transactionHash}`);
-    //     return res.transactionHash
-    // })
+        const buyToken = await tokenSaleContract.methods.buy(amountBuy)
+        .send({from: walletAddress, value: amountBuy, gas: estimateGas, nonce: nonce})
+        .then(async (res) => {
+            console.log(`buyToken: transactionHash ${res.transactionHash}`);
+            return res.transactionHash
+        })
 
-    const afterbalanceAPE = await web3.eth.getBalance(walletAddress);
-    console.log(`Balance APE ${afterbalanceAPE} `);
+        const afterbalanceAPE = await web3.eth.getBalance(walletAddress);
+        console.log(`Balance APE ${afterbalanceAPE} `);
 
-    const afterBalanceDApe = await tokenContract.methods.balanceOf(walletAddress).call()
-    console.log(`buyToken: After buying, token balance of is ${afterBalanceDApe}\n`)
+        const afterBalanceDApe = await tokenContract.methods.balanceOf(walletAddress).call()
+        console.log(`buyToken: After buying, token balance of is ${afterBalanceDApe}\n`)
+    } catch (error) {
+        console.error(`Error buying token ${error}`);
+    }
 }
 
 require("dotenv").config();

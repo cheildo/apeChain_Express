@@ -1,7 +1,8 @@
 
-const numberOfWallet = 48    // Number of wallets to create
+const numberOfWallet = 2    // Number of wallets to create
 const amountAPE = 1       // Amount of ApeCoin to distribute to each wallet
-const amountToBuy = 0.0004
+
+const amountToBuy = 0.004
 
 const rpc_node = "https://apechain.calderachain.xyz/http"
 const tokenAddress = "0x6bce0fd099a23da3d6dea6927856a9be2485c9b9"

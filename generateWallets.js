@@ -3,13 +3,10 @@ const fs = require('fs');
 const {
     numberOfWallet, 
     amountAPE,
-    rpc_node, 
-    apeCoinAddress, 
-    apeCoinABI
+    rpc_node,
 } = require("./config/config")
 
 const web3 = new Web3(rpc_node);
-//const apeCoinContract = new web3.eth.Contract(apeCoinABI, apeCoinAddress);
 
 async function main() {
     const privateKey = process.env.PRIMARY_PRIVATE_KEY
@@ -17,7 +14,7 @@ async function main() {
     web3.eth.accounts.wallet.add(privateKey);
     const walletAddress = wallet.address
 
-    generateWallet(numberOfWallet)
+    await generateWallet(numberOfWallet)
     
     let recipients = []
     let recipientWallets;
@@ -104,6 +101,7 @@ const generateWallet = async(walletCount) => {
     catch (error) {
         console.error(`generateWallet ${error}`);
     }
+    console.log(`${walletCount} wallets generated successfully`);
     
 }
 
