@@ -10,6 +10,7 @@
   "author": "Chek Zida",
   "license": "ISC",
   "dependencies": {
+    "alchemy-sdk": "^3.4.4",
     "dotenv": "^16.4.5",
     "fs": "^0.0.1-security",
     "web3": "^4.14.0"

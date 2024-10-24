@@ -1,11 +1,30 @@
 
 const numberOfWallet = 48    // Number of wallets to create
-const amountAPE = '1'       // Amount of ApeCoin to distribute to each wallet
+const amountAPE = 1       // Amount of ApeCoin to distribute to each wallet
+const amountToBuy = 0.0004
 
 const rpc_node = "https://apechain.calderachain.xyz/http"
-const apeCoinAddress = "0x48b62137EdfA95a428D35C09E44256a739F6B557"
+const tokenAddress = "0x6bce0fd099a23da3d6dea6927856a9be2485c9b9"
+const tokenSaleAddress = "0x76dcf6459e2ad08951ea022d2cb0d1ff5e547d6e" 
 
-const apeCoinABI = [
+
+const saleABI = [
+	{
+	  "inputs": [
+		{
+		  "internalType": "uint256",
+		  "name": "arg0",
+		  "type": "uint256"
+		}
+	  ],
+	  "name": "buy",
+	  "outputs": [],
+	  "stateMutability": "payable",
+	  "type": "function"
+	}
+  ];
+
+const erc20ABI = [
 	{
 		"anonymous": false,
 		"inputs": [
@@ -797,7 +816,10 @@ const apeCoinABI = [
 module.exports = {
     numberOfWallet,
     amountAPE,
+	amountToBuy,
     rpc_node,
-    apeCoinAddress,
-    apeCoinABI
+	tokenAddress,
+	tokenSaleAddress,
+	saleABI,
+    erc20ABI
 }

@@ -3,135 +3,78 @@ const fs = require('fs');
 const {
     numberOfWallet, 
     amountAPE,
-    rpc_node, 
-    apeCoinAddress, 
-    apeCoinABI
+    amountToBuy,
+    rpc_node,
+    tokenAddress,
+    tokenSaleAddress,
+    saleABI,
+	erc20ABI,
 } = require("./config/config")
 
 const web3 = new Web3(rpc_node);
-//const apeCoinContract = new web3.eth.Contract(apeCoinABI, apeCoinAddress);
+const tokenContract = new web3.eth.Contract(erc20ABI, tokenAddress);
+const tokenSaleContract = new web3.eth.Contract(saleABI, tokenSaleAddress);
 
 async function main() {
-    const privateKey = process.env.PRIMARY_PRIVATE_KEY
-    const wallet = web3.eth.accounts.privateKeyToAccount(privateKey);
-    web3.eth.accounts.wallet.add(privateKey);
-    const walletAddress = wallet.address
-
-    generateWallet(numberOfWallet)
-    
-    let recipients = []
-    let recipientWallets;
+    let wallets;
     try {
         const fileContent = fs.readFileSync("./wallets.json", 'utf8');
-        recipientWallets = JSON.parse(fileContent);
+        wallets = JSON.parse(fileContent);
     } catch (error) {
         console.error('Error reading wallets.json:', error);
-        process.exit(1);  // Exit if there's an error
+        process.exit(1);
     }
 
-    recipientWallets.forEach((wallet) => {
+    wallets.forEach((wallet) => {
         try {
-            recipients.push(wallet.address)
+            web3.eth.accounts.wallet.add(wallet.privateKey);
         } catch (error) {
             console.error(`Error adding wallet ${wallet.address}: ${error.message}`);
         }
     });
-
-    try {
-        const balance = await web3.eth.getBalance(walletAddress);
-        console.log(`Balance of primary wallet ${walletAddress} is ${web3.utils.fromWei(balance, 'ether')} ETH`);
     
-        const estimateGas = await web3.eth.estimateGas({
-            from: walletAddress,
-            to: recipients[0],
-            value: web3.utils.toWei(amountAPE, 'ether'),
-            gas: 3000000
-        })
-        .then(function(gasAmount) {
-            return gasAmount+BigInt(20000);
-        });
-        console.log(`Estimate gas for transferring APE: ${estimateGas}`);
+    const accounts = web3.eth.accounts.wallet.map((account) => account.address);
 
-        for(let i=0; i<recipients.length; i++) {
-            const nonce = await web3.eth.getTransactionCount(walletAddress, 'pending');
-            console.log(`Pending nonce ${nonce}`);
-
-            // const estimateGas = await web3.eth.estimateGas({
-            //     from: walletAddress,
-            //     to: recipients[0],
-            //     value: web3.utils.toWei(amountAPE, 'ether'),
-            //     gas: 300000
-            // })
-            // .then(function(gasAmount) {
-            //     return gasAmount+BigInt(30000);
-            // });
-            // console.log(`Estimate gas for transferring APE: ${estimateGas}`);
-
-            const receipt = await web3.eth.sendTransaction({
-                from: walletAddress,
-                to: recipients[i],
-                value: web3.utils.toWei(amountAPE, 'ether'),
-                gas: estimateGas,
-                nonce: nonce
-            });
-        
-            console.log(`${amountAPE} APE sent to account${i} ${recipients[i]}\nTransaction Hash ${receipt.transactionHash}\n`);
-        }
-        await getBalances(recipients)
-    }
-    catch (error) {
-        console.error(`Error transaction ${error}`);
+    for (let i=0; i<accounts.length; i++){
+        console.info(`Processing Account${i} ${accounts[i]}`);
+        await buyToken(accounts[i])
     }
 
     console.log(`\n....Program completed....`);
-
 }
-const generateWallet = async(walletCount) => {
-    try {
-        let wallets = [];
-        for (let i = 0; i < walletCount; i++) {
-            let wallet = web3.eth.accounts.create();
-            
-            wallets.push({
-                address: wallet.address,
-                privateKey: wallet.privateKey
-            });
-        }
 
-        fs.writeFileSync('wallets.json', JSON.stringify(wallets, null, 2));
-        console.log('Wallets created and saved to wallets.json');
-    }
-    catch (error) {
-        console.error(`generateWallet ${error}`);
-    }
+async function buyToken(walletAddress) {
+    const amountBuy = web3.utils.toWei(amountToBuy, 'ether');
+    //const valueETH = web3.utils.toWei("1", 'ether');
     
-}
+    const balanceAPE = await web3.eth.getBalance(walletAddress);
+    console.log(`Balance APE is ${balanceAPE}`);
 
-const getBalances = async(recipients) => {
-    const balancesData = [];
-    for(let i=0; i<recipients.length; i++) {
-        try {
-            const balance = await web3.eth.getBalance(recipients[i]);
-            const balanceInEth = web3.utils.fromWei(balance, 'ether');
-            console.log(`Balance account${i}  ${recipients[i]} is ${web3.utils.fromWei(balance, 'ether')} ETH`);
+    const balanceDApe = await tokenContract.methods.balanceOf(walletAddress).call()
+    console.log(`buyToken: token balance is ${balanceDApe}`)
 
-            balancesData.push({
-                address: recipients[i],
-                balance: `${balanceInEth} ETH`
-            });
-        }
-        catch (error) {
-            console.error(`getBalance: coudn't get balance of ${recipients[i]}, ${error}`);
-        }
-    }
+    const estimateGas = await tokenSaleContract.methods.buy(amountBuy)
+    .estimateGas({from: walletAddress, value: amountBuy, gas: 3000000})
+    .then(function(gasAmount) {
+        return gasAmount+BigInt(30000);
+    })
+    console.log(`buyToken: estimateGas is ${estimateGas}`)
 
-    fs.writeFile('balances.json', JSON.stringify(balancesData, null, 2), (err) => {
-        if (err) {
-            console.error('Error saving balances to file:', err);
-        } else {
-            console.log('Balances saved to balances.json');
-        }
-    });
+    const nonce= await web3.eth.getTransactionCount(walletAddress, 'pending');
+    console.log(`Wallet nonce ${nonce}`);
+
+    // const buyToken = await tokenSaleContract.methods.buy(amountBuy)
+    // .send({from: walletAddress, value: amountBuy, gas: estimateGas, nonce: nonce})
+    // .then(async (res) => {
+    //     console.log(`buyToken: transactionHash ${res.transactionHash}`);
+    //     return res.transactionHash
+    // })
+
+    const afterbalanceAPE = await web3.eth.getBalance(walletAddress);
+    console.log(`Balance APE ${afterbalanceAPE} `);
+
+    const afterBalanceDApe = await tokenContract.methods.balanceOf(walletAddress).call()
+    console.log(`buyToken: After buying, token balance of is ${afterBalanceDApe}\n`)
 }
 
 require("dotenv").config();
@@ -141,4 +84,3 @@ main()
         console.error(error)
         process.exit(1);
     });
-
