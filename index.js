@@ -1,7 +1,7 @@
 const {Web3} = require('web3');
 const fs = require('fs');
 const {
-    amountToBuy,
+    amountToSpend,
     rpc_node,
     tokenAddress,
     tokenSaleAddress,
@@ -43,14 +43,15 @@ async function main() {
 
 async function buyToken(walletAddress) {
     try {
-        const amountBuy = web3.utils.toWei(amountToBuy, 'ether');
-        //const valueETH = web3.utils.toWei("1", 'ether');
         
+        const balanceToken = await tokenContract.methods.balanceOf(walletAddress).call()
+        console.log(`buyToken: token balance is ${balanceToken}`)
+
         const balanceAPE = await web3.eth.getBalance(walletAddress);
         console.log(`Balance APE is ${balanceAPE}`);
 
-        const balanceDApe = await tokenContract.methods.balanceOf(walletAddress).call()
-        console.log(`buyToken: token balance is ${balanceDApe}`)
+        const amountBuy = BigInt(amountToSpend) * balanceAPE / 100n
+        console.log(`Amount to spend for buying ${amountBuy} APE`);
 
         const estimateGas = await tokenSaleContract.methods.buy(amountBuy)
         .estimateGas({from: walletAddress, value: amountBuy, gas: 3000000})
@@ -72,8 +73,8 @@ async function buyToken(walletAddress) {
         const afterbalanceAPE = await web3.eth.getBalance(walletAddress);
         console.log(`Balance APE ${afterbalanceAPE} `);
 
-        const afterBalanceDApe = await tokenContract.methods.balanceOf(walletAddress).call()
-        console.log(`buyToken: After buying, token balance of is ${afterBalanceDApe}\n`)
+        const afterBalanceToken = await tokenContract.methods.balanceOf(walletAddress).call()
+        console.log(`buyToken: After buying, token balance of is ${afterBalanceToken}\n`)
     } catch (error) {
         console.error(`Error buying token ${error}`);
     }

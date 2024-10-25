@@ -2,7 +2,7 @@
 const numberOfWallet = 2    // Number of wallets to create
 const amountAPE = 1       // Amount of ApeCoin to distribute to each wallet
 
-const amountToBuy = 0.004
+const amountToSpend = 10 // percentage of the total balance to spend
 
 const rpc_node = "https://apechain.calderachain.xyz/http"
 const tokenAddress = "0x6bce0fd099a23da3d6dea6927856a9be2485c9b9"
@@ -817,7 +817,7 @@ const erc20ABI = [
 module.exports = {
     numberOfWallet,
     amountAPE,
-	amountToBuy,
+	amountToSpend,
     rpc_node,
 	tokenAddress,
 	tokenSaleAddress,
