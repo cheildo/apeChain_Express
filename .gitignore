@@ -3,3 +3,6 @@ node_modules/
 generateWallet.js
 wallets.json
 balances.json
+old_wallets.json
+newBalances.json
+.DS_Store

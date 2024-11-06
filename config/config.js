@@ -2,10 +2,12 @@
 const numberOfWallet = 2    // Number of wallets to create
 const amountAPE = 1       // Amount of ApeCoin to distribute to each wallet
 
-const amountToSpend = 10 // percentage of the total balance to spend
+const amountToSpend = 98 // percentage of the total balance to spend
 
 const rpc_node = "https://apechain.calderachain.xyz/http"
-const tokenAddress = "0x6bce0fd099a23da3d6dea6927856a9be2485c9b9"
+
+const tokenAddress = "0xfc2744a6db0f97c606df786b97255dff6f27e320"
+//const tokenAddress = "0x6bce0fd099a23da3d6dea6927856a9be2485c9b9"
 const tokenSaleAddress = "0x76dcf6459e2ad08951ea022d2cb0d1ff5e547d6e" 
 
 
